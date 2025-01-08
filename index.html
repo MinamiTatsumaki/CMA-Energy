@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+      window.tailwind.config = {
+        darkMode: ["class"],
+        theme: {
+          extend: {
+            colors: {
+              border: "hsl(var(--border))",
+              input: "hsl(var(--input))",
+              ring: "hsl(var(--ring))",
+              background: "hsl(var(--background))",
+              foreground: "hsl(var(--foreground))",
+              primary: {
+                DEFAULT: "hsl(var(--primary))",
+                foreground: "hsl(var(--primary-foreground))",
+              },
+              secondary: {
+                DEFAULT: "hsl(var(--secondary))",
+                foreground: "hsl(var(--secondary-foreground))",
+              },
+              destructive: {
+                DEFAULT: "hsl(var(--destructive))",
+                foreground: "hsl(var(--destructive-foreground))",
+              },
+              muted: {
+                DEFAULT: "hsl(var(--muted))",
+                foreground: "hsl(var(--muted-foreground))",
+              },
+              accent: {
+                DEFAULT: "hsl(var(--accent))",
+                foreground: "hsl(var(--accent-foreground))",
+              },
+              popover: {
+                DEFAULT: "hsl(var(--popover))",
+                foreground: "hsl(var(--popover-foreground))",
+              },
+              card: {
+                DEFAULT: "hsl(var(--card))",
+                foreground: "hsl(var(--card-foreground))",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer base {
+        :root {
+          --background: 0 0% 100%;
+          --foreground: 240 10% 3.9%;
+          --card: 0 0% 100%;
+          --card-foreground: 240 10% 3.9%;
+          --primary: 240 5.9% 10%;
+          --primary-foreground: 0 0% 98%;
+        }
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const mainContent = document.querySelector("#main-content");
+
+        const homeContent = `
+          <div class="mt-8 mx-auto max-w-4xl">
+            <h2 class="text-2xl font-bold mb-4">Bem-vindo à CMA Energy</h2>
+            <p class="text-gray-700">
+              Explore nossas soluções para o setor industrial e descubra como podemos ajudar no seu projeto.
+            </p>
+          </div>
+        `;
+
+		const empresaContent = `
+  <div class="mt-8 mx-auto max-w-4xl">
+    <h2 class="text-2xl font-bold mb-4">Sobre a CMA Energy</h2>
+    <p class="text-gray-700 mb-4">
+      A CMA Energy é uma empresa especializada em soluções integradas para o setor industrial, oferecendo um amplo portfólio de produtos e serviços de alta qualidade. Atuamos no mercado nacional e internacional, com foco na importação, exportação e comercialização de válvulas, conexões, comportas metálicas, equipamentos de movimentação de carga, reservatórios de pressão, acionadores hidráulicos e elétricos, além de máquinas e equipamentos voltados para usinas hidrelétricas.
+    </p>
+    <p class="text-gray-700 mb-4">
+      Nossa expertise também abrange uma ampla gama de serviços de engenharia, incluindo elaboração de projetos, análise de viabilidade econômica, consultoria técnica, perícias de segurança, testes e treinamentos especializados. Oferecemos ainda serviços de montagem, manutenção e reparação de estruturas metálicas, tanques, reservatórios, caldeiras, válvulas industriais e equipamentos hidráulicos e pneumáticos.
+    </p>
+    <p class="text-gray-700 mb-4">
+      Com um compromisso sólido em fornecer soluções completas, a CMA Energy realiza obras de montagem industrial, instalação e manutenção de máquinas e equipamentos industriais, hidráulicos e elétricos, sempre priorizando eficiência e confiabilidade. Além disso, atuamos na intermediação de negócios e agenciamento de serviços, bem como no aluguel de máquinas e equipamentos industriais para construção, sem operador.
+    </p>
+    <p class="text-gray-700">
+      Na CMA Energy, nossa missão é garantir a excelência em cada projeto, atendendo às demandas de nossos clientes com tecnologia de ponta, inovação e soluções sob medida para os mais diversos segmentos industriais.
+    </p>
+  </div>
+`;
+
+
+
+        const renderContent = (content) => {
+          mainContent.innerHTML = content;
+        };
+
+        document.querySelector("#link-empresa").addEventListener("click", (e) => {
+          e.preventDefault();
+          renderContent(empresaContent);
+        });
+
+        document.querySelector("#link-home").addEventListener("click", (e) => {
+          e.preventDefault();
+          renderContent(homeContent);
+        });
+
+        // Renderiza a página inicial ao carregar
+        renderContent(homeContent);
+      });
+    </script>
+    <title>CMA Energy</title>
+  </head>
+  <body>
+    <main class="bg-background min-h-screen">
+      <header class="flex justify-between items-center p-4 bg-primary shadow-md">
+        <h1 id="link-home" class="text-3xl font-bold text-primary-foreground cursor-pointer">
+          CMA Energy
+        </h1>
+        <nav class="space-x-6">
+          <a id="link-empresa" href="#" class="text-primary-foreground hover:text-primary/80">Empresa</a>
+          <a href="#" class="text-primary-foreground hover:text-primary/80">Produtos</a>
+          <a href="#" class="text-primary-foreground hover:text-primary/80">Serviços</a>
+          <a href="#" class="text-primary-foreground hover:text-primary/80">Orçamento</a>
+          <a href="#" class="text-primary-foreground hover:text-primary/80">Contato</a>
+        </nav>
+      </header>
+      <div id="main-content"></div>
+    </main>
+  </body>
+</html>
